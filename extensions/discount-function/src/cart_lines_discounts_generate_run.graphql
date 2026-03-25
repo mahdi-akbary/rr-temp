@@ -1,0 +1,38 @@
+query CartInput {
+  cart {
+    cost {
+      subtotalAmount {
+        amount
+      }
+    }
+    lines {
+      id
+      quantity
+      merchandise {
+        __typename 
+        ... on ProductVariant {
+          id
+          title
+          product {
+            id
+            handle
+          }
+        }
+      }
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(
+      namespace: "custom"
+      key: "function-configuration"
+    ) {
+      jsonValue
+    }
+  }
+}
